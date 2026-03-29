@@ -1,0 +1,100 @@
+<!-- client/templates/emails/verification_email.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifica tu cuenta</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #FBB03B;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FBB03B;
+        }
+        .content {
+            padding: 30px 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #FBB03B;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        .button:hover {
+            background-color: #FBB03B;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #eee;
+        }
+        .warning {
+            background-color: #fff3e0;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Publikeishon</div>
+        </div>
+        
+        <div class="content">
+            <h2>¡Hola {{ user.first_name|default:user.username }}!</h2>
+            
+            <p>Gracias por registrarte en <strong>Publikeishon</strong>. Para comenzar a usar tu cuenta, necesitamos verificar tu dirección de correo electrónico.</p>
+            
+            <div style="text-align: center;">
+                <a href="{{ verification_url }}" class="button" style="text-decoration: none;">Verificar mi cuenta</a>
+            </div>
+            
+            <p>Si el botón no funciona, copia y pega el siguiente enlace en tu navegador:</p>
+            <p style="word-break: break-all; background: #f5f5f5; padding: 10px; border-radius: 4px;">
+                {{ verification_url }}
+            </p>
+            
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> Este enlace expirará en 24 horas. Si no solicitaste este registro, puedes ignorar este correo.
+            </div>
+            
+            <p>¿Tienes preguntas? Contáctanos en <a href="mailto:{{ support_email }}">{{ support_email }}</a></p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2026 Publikeishon. Todos los derechos reservados.</p>
+            <p>Este es un correo automático, por favor no responder.</p>
+        </div>
+    </div>
+</body>
+</html>
